@@ -1,0 +1,4 @@
+[default]
+duration = "30m"
+path = "/home/amarshall/Wallpapers"
+mode = "center"

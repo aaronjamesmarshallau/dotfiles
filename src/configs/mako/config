@@ -1,0 +1,6 @@
+on-button-left=invoke-default-action
+default-timeout=5000
+anchor=top-right
+border-radius=20
+background-color=#353535
+border-color=#d81159
