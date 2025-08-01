@@ -1,13 +1,22 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 let
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+  };
+  pkgs = import <nixos> {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "dotnet-runtime-7.0.20"
+      ];
+    };
   };
   unstable = import <nixos-unstable> {
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
         "openssl-1.1.1w"
+        "dotnet-runtime-7.0.20"
       ];
     };
   };
@@ -88,9 +97,11 @@ in
 
     home.packages = [
       pkgs.awscli2                    # awscli2
+      pkgs.code-cursor                # Cursor code editor
       pkgs.curl                       # Curl
       pkgs.davinci-resolve            # Video editing
       pkgs.dig                        # dig
+      pkgs.ergogen                    # Ergogen
       pkgs.evtest                     # Evtest
       pkgs.fd                         # fd - find but better
       pkgs.feh                        # Image Viewer
@@ -100,16 +111,20 @@ in
       pkgs.git                        # Git
       pkgs.godot_4                    # Godot game engine
       pkgs.jetbrains.idea-community   # Intellij IDEA IDE
+      pkgs.kicad                      # KiCad EDA suite
       pkgs.lutris                     # Lutris game manager
       pkgs.mpv                        # media player
       pkgs.nodejs                     # NodeJS
+      pkgs.obsidian                   # Obsidian note-taking app
       pkgs.postgresql_17              # Postgres
       pkgs.prismlauncher              # Minecraft launcher
+      pkgs.rpi-imager                 # Minecraft launcher
       pkgs.solaar                     # Solaar Logitech Device Manager
       pkgs.spotify                    # Spotify
       pkgs.sysfsutils                 # Systool
       pkgs.usbutils                   # lsusb
       pkgs.vesktop                    # Custom discord client
+      pkgs.vintagestory               # Vintage story game
       pkgs.vscode                     # Visual Studio Code
       pkgs.wev                        # Wayland Events
       pkgs.wget                       # Wget
