@@ -117,6 +117,8 @@ in
       pkgs.nodejs                     # NodeJS
       pkgs.obsidian                   # Obsidian note-taking app
       pkgs.postgresql_17              # Postgres
+      pkgs.esptool                    # EspTool for flashing ESP devices
+      pkgs.picocom                    # Serial terminal
       pkgs.prismlauncher              # Minecraft launcher
       pkgs.rpi-imager                 # Minecraft launcher
       pkgs.solaar                     # Solaar Logitech Device Manager
