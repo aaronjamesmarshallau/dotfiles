@@ -15,15 +15,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -123,7 +114,6 @@ button:hover {
     }
 }
 
-
 label:focus {
     background-color: #000000;
 }
@@ -137,10 +127,6 @@ label:focus {
 .system-drawer-child .module {
   margin-right: 5px;
 }
-
-#memory {
-}
-
 
 #network.disconnected {
     background-color: #f53c3c;
