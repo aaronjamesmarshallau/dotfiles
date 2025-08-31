@@ -10,6 +10,9 @@ let unstable = import <nixos-unstable> {
 };
 in
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-57-6.12.43"
+  ];
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -63,6 +66,12 @@ in
     user = "amarshall";
   };
 
+  systemd.services."systemd-suspend" = {
+    serviceConfig = {
+      Environment=''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
+    };
+  };
+
   hardware.xpadneo.enable = true;
 
   # nvidia
@@ -75,7 +84,7 @@ in
     # By default, only the bare essentials are written to disk from
     # VRAM. If you encounter video corruptions after waking from sleep
     # try enabling this option.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Turns off GPU when not in use - only supported by Turing or newer
     # cards.
@@ -83,7 +92,7 @@ in
 
     # Use the open source kernel for your GPU. Not to be confused with
     # nouveau drivers
-    open = false;
+    open = true;
 
     # nvidia settings UI enabled (`nvidia-settings`)
     nvidiaSettings = true;
@@ -122,6 +131,20 @@ in
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      userServices = true;
+      addresses = true;
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

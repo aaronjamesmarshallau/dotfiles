@@ -37,8 +37,19 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  # Development port
-  networking.firewall.allowedTCPPorts = [ 5173 ];
+  networking.firewall.allowedTCPPorts = [ 
+    # Local development server
+    5173 
+    # Sunshine
+    47984 
+    47989
+    47990
+    48010
+  ];
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 47998; to = 48000; }
+    { from = 8000; to = 8010; }
+  ];
   networking.hosts = lib.mkForce {
     "127.0.0.1" = [ "nixos" ];
   };
@@ -123,10 +134,10 @@ in
       pkgs.rpi-imager                 # Minecraft launcher
       pkgs.solaar                     # Solaar Logitech Device Manager
       pkgs.spotify                    # Spotify
+      pkgs.sunshine                   # Sunshine game streaming server
       pkgs.sysfsutils                 # Systool
       pkgs.usbutils                   # lsusb
       pkgs.vesktop                    # Custom discord client
-      pkgs.vintagestory               # Vintage story game
       pkgs.vscode                     # Visual Studio Code
       pkgs.wev                        # Wayland Events
       pkgs.wget                       # Wget
@@ -153,6 +164,7 @@ in
       pkgs.kdePackages.ark            # Archive manager
       pkgs.mako                       # Notification daemon
       pkgs.myxer                      # Audio mixer GUI
+      pkgs.pulseaudio
       pkgs.rofi-wayland               # Rofi general purpose list tool
       pkgs.seahorse                   # Seahorse password manager
       pkgs.zenity                     # Zenity dialog tool
@@ -160,6 +172,7 @@ in
       unstable.bruno                  # Bruno rest client
       unstable.hyprlock
       unstable.signal-desktop         # Signal encrypted messenger
+      unstable.vintagestory           # Vintage story game
       unstable.wpaperd                # Wallpaper configuration
       (unstable.bolt-launcher.override { enableRS3 = true; })
     ];
