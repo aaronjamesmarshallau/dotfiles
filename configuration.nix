@@ -11,7 +11,7 @@ let unstable = import <nixos-unstable> {
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.43"
+    "broadcom-sta-6.30.223.271-57-6.12.48"
   ];
   imports =
     [ # Include the results of the hardware scan.
@@ -22,6 +22,7 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 0;
   boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1"];
 
   boot.extraModprobeConfig = '' options bluetooth disable_ertm=1 '';

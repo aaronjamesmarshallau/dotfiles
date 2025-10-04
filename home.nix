@@ -37,11 +37,11 @@ in
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  networking.firewall.allowedTCPPorts = [ 
+  networking.firewall.allowedTCPPorts = [
     # Local development server
-    5173 
+    5173
     # Sunshine
-    47984 
+    47984
     47989
     47990
     48010
@@ -87,7 +87,7 @@ in
     # Install Waybar
     programs.waybar.enable = true;
 
-    home.file = {            
+    home.file = {
       # other configs
       ".config" = {
         source = ./src/configs;
@@ -110,7 +110,6 @@ in
       pkgs.awscli2                    # awscli2
       pkgs.code-cursor                # Cursor code editor
       pkgs.curl                       # Curl
-      pkgs.davinci-resolve            # Video editing
       pkgs.dig                        # dig
       pkgs.ergogen                    # Ergogen
       pkgs.evtest                     # Evtest
@@ -123,7 +122,6 @@ in
       pkgs.godot_4                    # Godot game engine
       pkgs.jetbrains.idea-community   # Intellij IDEA IDE
       pkgs.kicad                      # KiCad EDA suite
-      pkgs.lutris                     # Lutris game manager
       pkgs.mpv                        # media player
       pkgs.nodejs                     # NodeJS
       pkgs.obsidian                   # Obsidian note-taking app
@@ -131,6 +129,8 @@ in
       pkgs.esptool                    # EspTool for flashing ESP devices
       pkgs.picocom                    # Serial terminal
       pkgs.prismlauncher              # Minecraft launcher
+      pkgs.nixd
+      pkgs.qdirstat                   # QDirStat disk usage analyzer
       pkgs.rpi-imager                 # Minecraft launcher
       pkgs.solaar                     # Solaar Logitech Device Manager
       pkgs.spotify                    # Spotify
@@ -174,6 +174,7 @@ in
       unstable.signal-desktop         # Signal encrypted messenger
       unstable.vintagestory           # Vintage story game
       unstable.wpaperd                # Wallpaper configuration
+      unstable.zed-editor                 # Zed code editor
       (unstable.bolt-launcher.override { enableRS3 = true; })
     ];
 
