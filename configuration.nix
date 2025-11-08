@@ -11,7 +11,7 @@ let unstable = import <nixos-unstable> {
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.48"
+    "broadcom-sta-6.30.223.271-57-6.12.55"
   ];
   imports =
     [ # Include the results of the hardware scan.
@@ -162,6 +162,7 @@ in
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
   };
   
   programs.hyprland = {

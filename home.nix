@@ -8,6 +8,7 @@ let
       allowUnfree = true;
       permittedInsecurePackages = [
         "dotnet-runtime-7.0.20"
+        "python3.12-ecdsa-0.19.1"
       ];
     };
   };
@@ -19,6 +20,7 @@ let
         "dotnet-runtime-7.0.20"
       ];
     };
+    overlays = [ (import ./overlays/vintagestory.nix) ];
   };
 in
 {
@@ -51,7 +53,11 @@ in
     { from = 8000; to = 8010; }
   ];
   networking.hosts = lib.mkForce {
-    "127.0.0.1" = [ "nixos" ];
+    "127.0.0.1" = [ 
+      "nixos" 
+      # "imaaronnicetomeetyou.me" 
+      # "api.imaaronnicetomeetyou.me" 
+    ];
   };
 
   home-manager.users.amarshall = {
@@ -131,7 +137,8 @@ in
       pkgs.prismlauncher              # Minecraft launcher
       pkgs.nixd
       pkgs.qdirstat                   # QDirStat disk usage analyzer
-      pkgs.rpi-imager                 # Minecraft launcher
+      pkgs.rpi-imager                 # Rasperry Pi Imager
+      pkgs.smartmontools              # Smartctl disk utility
       pkgs.solaar                     # Solaar Logitech Device Manager
       pkgs.spotify                    # Spotify
       pkgs.sunshine                   # Sunshine game streaming server
@@ -176,6 +183,7 @@ in
       unstable.wpaperd                # Wallpaper configuration
       unstable.zed-editor                 # Zed code editor
       (unstable.bolt-launcher.override { enableRS3 = true; })
+      
     ];
 
     gtk.cursorTheme = {
