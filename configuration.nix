@@ -11,7 +11,7 @@ let unstable = import <nixos-unstable> {
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.55"
+    "broadcom-sta-6.30.223.271-59-6.12.80"
   ];
   imports =
     [ # Include the results of the hardware scan.
@@ -25,6 +25,7 @@ in
   boot.loader.timeout = 0;
   boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1"];
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [ xpadneo ];
   boot.extraModprobeConfig = '' options bluetooth disable_ertm=1 '';
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -99,7 +100,7 @@ in
     nvidiaSettings = true;
 
     # Specify which drivers to use.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # Configure keymap in X11
