@@ -12,3 +12,6 @@ vim.opt.smartindent = true
 -- wraps
 vim.opt.wrap = false
 
+--clip
+vim.opt.clipboard = "unnamedplus"
+

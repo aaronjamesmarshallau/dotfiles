@@ -11,7 +11,7 @@ let unstable = import <nixos-unstable> {
 in
 {
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.12.80"
+    "broadcom-sta-6.30.223.271-59-6.18.34"
   ];
   imports =
     [ # Include the results of the hardware scan.

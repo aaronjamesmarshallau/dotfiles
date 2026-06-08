@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
   home-manager = builtins.fetchTarball {
-    url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+    url = "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz";
   };
   pkgs = import <nixos> {
     config = {
@@ -19,9 +19,6 @@ let
         "dotnet-runtime-7.0.20"
       ];
     };
-    overlays = [ 
-      (import ./overlays/vintagestory.nix)
-    ];
   };
 in
 {
@@ -100,7 +97,10 @@ in
     };
 
     # Install Firefox
-    programs.firefox.enable = true;
+    programs.firefox = {
+      enable = true;
+      package = unstable.firefox;
+    };
 
     # Install Waybar
     programs.waybar.enable = true;
@@ -152,6 +152,7 @@ in
       pkgs.obsidian                   # Obsidian note-taking app
       pkgs.playerctl
       pkgs.postgresql_17              # Postgres
+      pkgs.protonup-qt                # ProtonUp in QT
       pkgs.esptool                    # EspTool for flashing ESP devices
       pkgs.picocom                    # Serial terminal
       (pkgs.prismlauncher.override { jdks = [ pkgs.jdk17 pkgs.jdk21 pkgs.jdk25 ]; })              # Minecraft launcher

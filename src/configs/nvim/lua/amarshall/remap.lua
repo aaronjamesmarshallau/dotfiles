@@ -16,7 +16,7 @@ whichKey.add({
     group = "nvim",	
     { "<leader>q", "<cmd>q<cr>", desc = "Quit", mode = { "n", "v" } },
     { "<leader>w", "<cmd>w<cr>", desc = "Save", mode = { "n", "v" } },
-    { "<leader>e", vim.cmd.Ex, desc = "Open netrw in current directory", mode = { "n", "v" } },
+    { "<leader>e", "<cmd>Oil<cr>", desc = "Open Oil", mode = { "n", "v" } },
   }
 })
 

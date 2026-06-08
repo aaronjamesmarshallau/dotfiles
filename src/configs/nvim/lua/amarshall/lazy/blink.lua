@@ -14,6 +14,8 @@ return {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 
+    signature = { enabled = true },
+
     fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   opts_extend = { "sources.default" },

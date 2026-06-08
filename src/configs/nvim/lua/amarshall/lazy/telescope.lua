@@ -10,8 +10,8 @@ return {
     telescope.setup({
       pickers = {
         find_files = {
-          find_command = { "fd", "--color", "never" }
-	}
+          find_command = { "fd", "--color", "never", "--hidden" }
+	      }
       }
     })
   end
